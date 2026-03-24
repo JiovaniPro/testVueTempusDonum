@@ -17,6 +17,7 @@ export function useTasks() {
   // Search and filter state
   const searchQuery = ref('')
   const statusFilter = ref('All')
+  const priorityFilter = ref('All')
 
   // UI state
   const isFormOpen = ref(false)
@@ -39,12 +40,16 @@ export function useTasks() {
       const matchesStatus =
         statusFilter.value === 'All' || task.status === statusFilter.value
 
+      // Priority filter
+      const matchesPriority =
+        priorityFilter.value === 'All' || task.priority === priorityFilter.value
+
       // Search filter on title and assignee (case-insensitive)
       const matchesSearch =
         task.title.toLowerCase().includes(query) ||
         task.assignee.toLowerCase().includes(query)
 
-      return matchesStatus && matchesSearch
+      return matchesStatus && matchesPriority && matchesSearch
     })
   })
 
@@ -111,6 +116,7 @@ export function useTasks() {
     tasks,
     searchQuery,
     statusFilter,
+    priorityFilter,
     stats,
     filteredTasks,
     changeStatus,

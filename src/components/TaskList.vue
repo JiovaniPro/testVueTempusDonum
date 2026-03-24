@@ -12,6 +12,7 @@ import ConfirmDeleteModal from './ConfirmDeleteModal.vue'
 const {
   searchQuery,
   statusFilter,
+  priorityFilter,
   stats,
   filteredTasks,
   changeStatus,
@@ -26,6 +27,7 @@ const {
 } = useTasks()
 
 const statusOptions = ['All', 'To do', 'In progress', 'Done']
+const priorityOptions = ['All', 'high', 'medium', 'low']
 
 const isDeleteOpen = ref(false)
 const deleteTargetId = ref(null)
@@ -74,6 +76,15 @@ function confirmDelete() {
         class="rounded-lg border border-rose-200 px-4 py-2 text-sm shadow-sm bg-white/80 focus:outline-none focus:ring-2 focus:ring-rose-200"
       >
         <option v-for="option in statusOptions" :key="option" :value="option">
+          {{ option }}
+        </option>
+      </select>
+
+      <select
+        v-model="priorityFilter"
+        class="rounded-lg border border-rose-200 px-4 py-2 text-sm shadow-sm bg-white/80 focus:outline-none focus:ring-2 focus:ring-rose-200"
+      >
+        <option v-for="option in priorityOptions" :key="option" :value="option">
           {{ option }}
         </option>
       </select>
