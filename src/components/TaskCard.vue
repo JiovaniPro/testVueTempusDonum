@@ -49,17 +49,50 @@ function onDelete() {
       <div class="flex items-center gap-2 shrink-0">
         <button
           type="button"
-          class="rounded-lg border border-rose-200 px-2.5 py-1 text-xs font-semibold text-rose-700 hover:bg-rose-50"
+          class="inline-flex items-center justify-center rounded-lg border border-rose-200 bg-white/60 p-2 text-rose-700 hover:bg-rose-50"
+          aria-label="Edit task"
+          title="Edit"
           @click="onEdit"
         >
-          Edit
+          <!-- Pencil icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+          >
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+          </svg>
         </button>
         <button
           type="button"
-          class="rounded-lg border border-orange-200 px-2.5 py-1 text-xs font-semibold text-orange-700 hover:bg-orange-50"
+          class="inline-flex items-center justify-center rounded-lg border border-orange-200 bg-white/60 p-2 text-orange-700 hover:bg-orange-50"
+          aria-label="Delete task"
+          title="Delete"
           @click="onDelete"
         >
-          Delete
+          <!-- Trash icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+          >
+            <path d="M3 6h18" />
+            <path d="M8 6V4h8v2" />
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+            <path d="M10 11v6" />
+            <path d="M14 11v6" />
+          </svg>
         </button>
       </div>
     </div>

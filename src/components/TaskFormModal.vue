@@ -69,11 +69,11 @@ function onBackdrop(e) {
 
 <template>
   <div v-if="open" class="fixed inset-0 z-50">
-    <div class="absolute inset-0 bg-rose-900/20" @click="onBackdrop"></div>
+    <div class="absolute inset-0 bg-slate-900/30" @click="onBackdrop"></div>
 
     <div class="relative mx-auto mt-16 w-[92%] max-w-xl">
-      <div class="rounded-2xl bg-rose-50 shadow-xl border border-rose-100 overflow-hidden">
-        <div class="px-6 py-4 border-b border-rose-100 flex items-center justify-between">
+      <div class="rounded-2xl bg-white shadow-xl border border-slate-200 overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
           <div>
             <h2 class="text-lg font-bold text-slate-700">
               {{ isEdit ? 'Edit task' : 'Add task' }}
@@ -82,7 +82,7 @@ function onBackdrop(e) {
           </div>
           <button
             type="button"
-            class="rounded-lg px-2 py-1 text-sm text-slate-500 hover:text-slate-700 hover:bg-rose-100"
+            class="rounded-lg px-2 py-1 text-sm text-slate-500 hover:text-slate-700 hover:bg-slate-100"
             @click="emit('close')"
           >
             Close
@@ -95,7 +95,7 @@ function onBackdrop(e) {
             <input
               v-model="form.title"
               type="text"
-              class="w-full rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-200"
+              class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-200"
               placeholder="e.g. Design homepage"
             />
             <p v-if="errors.title" class="mt-1 text-xs text-red-600">{{ errors.title }}</p>
@@ -106,7 +106,7 @@ function onBackdrop(e) {
             <input
               v-model="form.assignee"
               type="text"
-              class="w-full rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-200"
+              class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-200"
               placeholder="e.g. Alice"
             />
             <p v-if="errors.assignee" class="mt-1 text-xs text-red-600">{{ errors.assignee }}</p>
@@ -117,7 +117,7 @@ function onBackdrop(e) {
               <label class="block text-sm font-medium text-slate-700 mb-1">Status</label>
               <select
                 v-model="form.status"
-                class="w-full rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-200"
+                class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-200"
               >
                 <option value="To do">To do</option>
                 <option value="In progress">In progress</option>
@@ -129,7 +129,7 @@ function onBackdrop(e) {
               <label class="block text-sm font-medium text-slate-700 mb-1">Priority</label>
               <select
                 v-model="form.priority"
-                class="w-full rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-200"
+                class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-200"
               >
                 <option value="high">high</option>
                 <option value="medium">medium</option>
@@ -143,7 +143,7 @@ function onBackdrop(e) {
             <input
               v-model="form.duedate"
               type="date"
-              class="w-full rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-200"
+              class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-200"
             />
             <p v-if="errors.duedate" class="mt-1 text-xs text-red-600">{{ errors.duedate }}</p>
           </div>
@@ -151,14 +151,14 @@ function onBackdrop(e) {
           <div class="pt-2 flex items-center justify-end gap-2">
             <button
               type="button"
-              class="rounded-lg border border-rose-200 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-rose-100"
+              class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
               @click="emit('close')"
             >
               Cancel
             </button>
             <button
               type="submit"
-              class="rounded-lg bg-rose-200 px-4 py-2 text-sm font-semibold text-rose-800 hover:bg-rose-300"
+              class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-300"
             >
               {{ isEdit ? 'Save changes' : 'Create task' }}
             </button>

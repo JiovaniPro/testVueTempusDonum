@@ -1,10 +1,12 @@
 <!-- src/components/TaskList.vue -->
 <!-- Owns the state via useTasks composable — handles search, filter, and task grid -->
 <script setup>
+import { ref } from 'vue'
 import { useTasks } from '../composables/useTasks'
 import StatsBar from './StatsBar.vue'
 import TaskCard from './TaskCard.vue'
 import TaskFormModal from './TaskFormModal.vue'
+import ConfirmDeleteModal from './ConfirmDeleteModal.vue'
 
 // All state and logic comes from the composable
 const {
@@ -25,13 +27,27 @@ const {
 
 const statusOptions = ['All', 'To do', 'In progress', 'Done']
 
+const isDeleteOpen = ref(false)
+const deleteTargetId = ref(null)
+
 function handleStatusChange({ id, newStatus }) {
   changeStatus(id, newStatus)
 }
 
 function handleDelete(id) {
-  if (!confirm('Delete this task? This cannot be undone.')) return
-  removeTask(id)
+  deleteTargetId.value = id
+  isDeleteOpen.value = true
+}
+
+function cancelDelete() {
+  isDeleteOpen.value = false
+  deleteTargetId.value = null
+}
+
+function confirmDelete() {
+  if (deleteTargetId.value == null) return
+  removeTask(deleteTargetId.value)
+  cancelDelete()
 }
 </script>
 
@@ -96,6 +112,14 @@ function handleDelete(id) {
       :task="editingTask"
       @close="closeForm"
       @save="upsertTask"
+    />
+
+    <ConfirmDeleteModal
+      :open="isDeleteOpen"
+      title="Delete task?"
+      message="This action cannot be undone."
+      @cancel="cancelDelete"
+      @confirm="confirmDelete"
     />
   </div>
 </template>
